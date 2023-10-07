@@ -1,4 +1,5 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
@@ -21,10 +22,72 @@
             <h1>@Model.Value("featureSectionDescription")</h1>
             <a href="@Model.Value("featureSectionButtonUrl")" class="yellow-btn">@Model.Value("featureSectionButtonText")<i class="fa-solid fa-arrow-up-right"></i></a>
         </div>
-        
            
-             @Html.GetBlockListHtml(Model.ServiceFeatures)
-             
-        
+         @Html.GetBlockListHtml(Model.ServiceFeatures)
+  
     </div>
 </section>
+
+@await Html.PartialAsync("_About-Us")
+
+ <section class="our-services ">
+        <div class="container">
+            <p>@Model.Value("ourServicesTitle")</p>
+            <h1>@Model.Value("ourServicesHeader")</h1>
+            
+                @Html.GetBlockListHtml(Model.OurServicesOptions)
+                
+        </div>
+        <a href="/service" class="beige-btn">Browse Services <i class="fa-solid fa-arrow-up-right"></i></a>
+        <img class="wavy-right" src="images/background-lines-right.svg" alt="">
+    </section>
+    
+    
+    
+     <section class="choose-us ">
+        <div class="beige-background"></div>
+        <div class="container">
+            <div class="choice-left">
+                <p>@Model.Value("chooseUsTitle")</p>
+                <h1>@Model.Value("chooseUsHeader")</h1>
+                
+                @Html.GetBlockListHtml(Model.ChooseUsChoices)
+    
+    
+            </div>
+            
+            
+            
+            <div class="choice-right">
+
+               
+                
+                @{
+                    var chooseUsImg = Model.Value<MediaWithCrops>("chooseUsImg");
+                    if (chooseUsImg != null) {
+                    
+                    <img src="@chooseUsImg.MediaUrl()" alt="@Model.Value("chooseUsTitle")" />
+                    
+                    }
+
+                }
+
+
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

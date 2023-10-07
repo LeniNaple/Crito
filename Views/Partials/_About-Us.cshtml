@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models
+
+<section class="about-us container ">
+    <div class="left-about">
+        <img class="wavy-left" src="images/wavt-left.png" alt="">
+
+        @{
+                    var aboutImg = Model.Value<MediaWithCrops>("aboutSectionImg");
+                    if (aboutImg != null) 
+                    {
+
+                        <img class="samantha-img" src="@aboutImg.MediaUrl()" alt="@Model.Value("aboutSectionTitle")" />
+
+                    }
+        }
+
+
+        <div class="blue-square">
+            <h1>@Model.Value("aboutSectionPersonalName"), <span>@Model.Value("aboutSectionPersonalTitle")</span></h1>
+            <p>@Model.Value("aboutSectionPersonalDescription")</p>
+        </div>
+    </div>
+    <div class="right-about">
+        <div class="about-text">
+            <h3>@Model.Value("aboutSectionTitle")</h3>
+            <h1>@Model.Value("aboutSectionHeader")</h1>
+            <p>@Model.Value("aboutSectionDescription")</p>
+        </div>
+        <div class="about-buttons">
+            <a href="@Model.Value("aboutSectionButtonUrl")" class="black-btn">@Model.Value("aboutSectionButtonText") <i class="fa-solid fa-arrow-up-right"></i></a>
+            <button class="white-button"><i class="fa-solid fa-play"></i></button>
+            <p>Intro Video</p>
+        </div>
+    </div>
+</section>

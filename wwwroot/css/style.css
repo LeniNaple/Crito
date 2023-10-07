@@ -434,13 +434,13 @@ a:hover i {
         font-size: 45px;
     }  
 
-    .our-services .container .service-cards {
+    .our-services .container .umb-block-list {
        display: flex;
        align-items: center;
        justify-content: space-between;
        gap: 30px;
     }  
-        .our-services .container .service-cards .service-card{
+        .our-services .container .umb-block-list .service-card{
             background-color: white;
             padding: 45px 25px;
             height: 100%;
@@ -448,21 +448,21 @@ a:hover i {
             position: relative;
             margin: 50px 0;
         }  
-            .our-services .container .service-cards .service-card .gray-line {
+            .our-services .container .umb-block-list .service-card .gray-line {
                 width: 15%;
                 margin-bottom: 45px;
                 border: rgb(25, 25, 25, 70%) 1px solid;
             }  
-            .our-services .container .service-cards .service-card h2{
+            .our-services .container .umb-block-list .service-card h2{
                 font-family: 'Dm sans';
                 font-size: 22px;
                 margin-bottom: 15px;
             } 
-            .our-services .container .service-cards .service-card p{
+            .our-services .container .umb-block-list .service-card p{
                 color: rgb(25, 25, 25, 70%);
                 margin-bottom: 100px;
             } 
-            .our-services .container .service-cards .service-card button{
+            .our-services .container .umb-block-list .service-card a{
                 position: absolute;
                 right: 25px;
                 bottom: 55px;
@@ -473,19 +473,19 @@ a:hover i {
                 justify-content: center;
                 padding: 0;
             } 
-                .our-services .container .service-cards .service-card button i{
+                .our-services .container .umb-block-list .service-card a i{
                     font-size: 25px;
                 } 
 
-        .our-services .container .service-cards .service-card:hover {
+        .our-services .container .umb-block-list .service-card:hover {
             background-color: #F9D783;
             border: #F9D783 1px solid;
         }  
-            .our-services .container .service-cards .service-card:hover button {
+            .our-services .container .umb-block-list .service-card:hover a {
                 background-color: white;
                 border: white 1px solid;
             }  
-            .our-services .container .service-cards .service-card:hover button i {
+            .our-services .container .umb-block-list .service-card:hover a i {
                 color: #191919;
             }  
 

@@ -7,12 +7,13 @@
 @inject IPublishedValueFallback PublishedValueFallback
 @inject IPublishedUrlProvider PublishedUrlProvider
 
+
 @{ 
+    
     var site = Model.Root();
     var selection = Model.Root().Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray(); 
+    
 }
-
-
 
 
 <div class="top-menu container">
@@ -48,19 +49,23 @@
 
         <div class="menu-links">
             <div class="menu-options">
- 
+
+                <a class="menu-option @(Model.Id == site.Id ? "active": null)" href="@site.Url(PublishedUrlProvider)"><p>@site.Name</p></a>
+
+
                 @if (selection?.Length > 0)
                 {
-                    <ul>
-                        @foreach (var item in selection)
+
+                foreach (var item in selection)
                         {
-                            <a  class="menu-option @(item.IsAncestorOrSelf(Model) ? "active": null)" href="@item.Url(PublishedUrlProvider)"  ><p>@item.Name</p></a>
+                            <a class="menu-option @(item.IsAncestorOrSelf(Model) ? "active": null)" href="@item.Url(PublishedUrlProvider)"><p>@item.Name</p></a>
                         }
-                    </ul>
+
                 }
-    
+
             </div>
             <button class="login-btn yellow-btn"><p>Login</p><i class="fa-solid fa-arrow-up-right"></i></button>
         </div>
     </div>
 </div>
+

@@ -799,6 +799,34 @@ a:hover i {
     .news .container .small-dots{
         text-align: center;
     }
+    
+    .news .container .moving-news{
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                column-gap: 15px;
+                padding-bottom: 85px;
+            }
+
+                .news .container .moving-news button{
+                    font-size: 21px;
+                    font-family: var(--font-dm);
+                    font-weight: var(--font-weight-medium);
+                    color: #19191B;
+                    background-color: white;
+                    border: 1px solid #EAE9F2;
+                    padding-top: 15px;
+                    padding-right: 15px;
+                    padding-left: 15px;
+                    padding-bottom: 8px;
+                    border-radius: 10px;
+                    transition: all 200ms ease-in-out;
+                }
+
+                    .news .container .moving-news button:hover{
+                        background-color: var(--color-black);
+                        color: white;
+                    }
 
 
 

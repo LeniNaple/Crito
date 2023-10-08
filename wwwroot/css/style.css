@@ -149,6 +149,7 @@ a:hover i {
 .header-menu {
     background-color: #F0EFE9;
     position: relative;
+    margin-bottom: 100px;
 }
 
     .header-menu .top-menu {
@@ -275,7 +276,6 @@ a:hover i {
 .partners {
     display: flex;
     justify-content: space-between;
-    margin-top: 70px;
 }
 
 .features {
@@ -675,6 +675,7 @@ a:hover i {
                     }
             .orange-section .container .meet-our-team .small-dots {
                 margin-bottom: 50px;
+                text-align: center;
             }
     .orange-section .reviews {
         background-color: white;
@@ -738,6 +739,11 @@ a:hover i {
                         }
                 
 
+.news-beige {
+    background-color: var(--color-beige);
+    padding: 45px 0;
+}
+
 
 .news .container > p {
     color: #F94D1C;
@@ -760,6 +766,7 @@ a:hover i {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
     margin-bottom: 60px;
+    width:100%;
 }
     .news .container .news-grid .news-card{
         display: flex;
@@ -1040,7 +1047,6 @@ a:hover i {
             z-index: 1;
         }
         
-        
   
 .digitalization h2 {
     font-family: var(--font-dm);
@@ -1158,6 +1164,12 @@ a:hover i {
                 padding: 40px;
                 margin-bottom: 40px;
             }
+                .digitalization-flex .digitalization-right .recent-posts .post-part a{
+                   font-family: var(--font-dm);
+                    font-size: var(--font-size-16);
+                    font-weight: var(--font-weight-bold);
+                }
+
 
                 .digitalization-flex .digitalization-right .recent-posts a {
                     font-family: var(--font-dm);
@@ -1170,12 +1182,6 @@ a:hover i {
                     .digitalization-flex .digitalization-right .recent-posts a:hover {
                         text-decoration: underline;
                     }
-
-                .digitalization-flex .digitalization-right .recent-posts h5 {
-                    font-family: var(--font-dm);
-                    font-size: var(--font-size-16);
-                    font-weight: var(--font-weight-bold);
-                }
 
                 .digitalization-flex .digitalization-right .recent-posts h6 {
                     font-family: var(--font-inter);

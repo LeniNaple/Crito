@@ -1,15 +1,19 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticleItemPage>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticleItemPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.Services;
 @using Umbraco.Cms.Core.Models.PublishedContent;
 @inject IUserService UserService;
+
 
 @{
     Layout = "LayoutWithBreadcrumb.cshtml";
     var userService = UserService;
     var image = Model.Value<IPublishedContent>("newsImage");
     ViewData["PageTitle"] = "News & Articles";
+    var selection = Umbraco?.Content(Guid.Parse("558dc1ca-a36b-4959-94a3-58c3c89d795c"))?
+        .ChildrenOfType("articleItemPage")?
+        .Where(x => x.IsVisible())
+        .OrderBy(x => x.UpdateDate);
 }
 
 
@@ -47,34 +51,34 @@
 
                     <a href="/">Recent Posts</a>
 
-                    <div class="post-part-one">
-                        <h5>How To Blow Through Capital At An</h5>
-                        <h5>Incredible Rate</h5>
-                        <h6>Jan 14, 2020</h6>
-                        <p class="border"></p>
-                    </div>
+                    	@if (selection != null)
+                        {
+                            int count = 0;
 
-                    <div class="post-part-two">
-                        <h5>Design Studios That Everyone Should </h5>
-                        <h5>Know About? </h5>
-                        <h6>Jan 14, 2020</h6>
-                        <p class="border"></p>
-                    </div>
+                            @foreach (var item in selection)
+                            {
+                                count++;
+                                var url = item.Url();
+                                var date = item.CreateDate;
+                                var title = item.Name();
+                                
+                                if (count > 4)
+                                {
+                                    break;
+                                }else
+                                {
 
-                    <div class="post-part-three">
-                        <h5>How did we get 1M+ visitors in 30 days</h5>
-                        <h5>without anything!</h5>
-                        <h6>Jan 14, 2020</h6>
-                        <p class="border"></p>
-                    </div>
-
-                    <div class="post-part-four">
-                        <h5>Figma On Figma: How We Built Our </h5>
-                        <h5>Website Design System</h5>
-                        <h6>Jan 14, 2020</h6>
-                    </div>
-                    
+                                    <div class="post-part">
+                                        <a href="@url">@title</a>
+                                        <h6>@date.ToString("MMM dd, yyyy")</h6>
+                                        <p class="border"></p>
+                                    </div>
+                                }
+                            }
+                        }
                 </div>
+
+
 
                 <div class="categories">
 
@@ -118,51 +122,8 @@
     </section>
     
 
-    <section class="news">
-        <div class="container">
-            <p>Article & News</p>
-            <div class="news-title">
-                <h1>Get Every Single Articles & News</h1>
-                <button class="white-btn">Browse Articles <i class="fa-solid fa-arrow-up-right"></i></button>
-            </div>
-            <div class="news-grid">
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>25</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im1.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>How To Use Digitalization In The Classroom</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>17</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im2.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>How To Implement Chat GPT In Your Projects</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>13</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im2.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>The Guide To Support Modern CSS Design</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-            </div>
-            <div class="small-dots">
-                <i id="black-ball" class="fa-solid fa-circle unactive-color"></i>
-                <i class="fa-solid fa-circle"></i>
-                <i class="fa-solid fa-circle unactive-color"></i>
-                <i class="fa-solid fa-circle unactive-color"></i>
-                <i class="fa-solid fa-circle unactive-color"></i>
-            </div>
-        </div>
-    </section>
+    <div class="news-beige">
+        
+        @await Html.PartialAsync("_NewsSection")
+        
+    </div>

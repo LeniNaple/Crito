@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700&family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Poppins:ital,wght@0,100;1,200;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700&family=Dancing+Script:wght@400;500;600;700&family=Poppins:ital,wght@0,100;1,200;1,500&display=swap');
 
 :root {
     --theme: #F0EFE9;
@@ -756,7 +757,7 @@ a:hover i {
     }
 .news .container .news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
     margin-bottom: 60px;
 }
@@ -765,10 +766,11 @@ a:hover i {
         flex-direction: column;
         position: relative;
         gap: 15px;
+        max-width: 420px;
     }
         .news .container .news-grid .news-card img{
             width: 100%;
-            height: 100%;
+            height: 230px;
         }
         .news .container .news-grid .news-card .yellow-square{
             position:absolute;
@@ -808,10 +810,10 @@ a:hover i {
                 padding-bottom: 85px;
             }
 
-                .news .container .moving-news button{
+                .news .container .moving-news a{
                     font-size: 21px;
                     font-family: var(--font-dm);
-                    font-weight: var(--font-weight-medium);
+                    font-weight: 500;
                     color: #19191B;
                     background-color: white;
                     border: 1px solid #EAE9F2;
@@ -822,9 +824,18 @@ a:hover i {
                     border-radius: 10px;
                     transition: all 200ms ease-in-out;
                 }
+                 .news .container .moving-news .active{
+                    color: white;
+                    background-color: #19191B;
+                    transition: all 200ms ease-in-out;
+                }
+                     .news .container .moving-news .active:hover {
+                        color: #19191B;
+                        background-color: white;
+                    }
 
-                    .news .container .moving-news button:hover{
-                        background-color: var(--color-black);
+                    .news .container .moving-news a:hover{
+                        background-color: #191919;
                         color: white;
                     }
 
@@ -874,7 +885,7 @@ a:hover i {
             color: var(--color-opacity-white-70);
             font-family: 'Inter', sans-serif;
             font-size: var(--font-size-16);
-            font-weight: var(--font-weight-medium);
+            font-weight: 500;
             margin-bottom: 25px;
             text-decoration: none;
             transition: all 200ms ease-in-out;
@@ -999,21 +1010,25 @@ a:hover i {
         text-align: center;
         padding-top: 110px;
         padding-bottom: 80px;
+        z-index: 1;
     }
 
-        .connect-showcase a {
+        .connect-showcase .connect-showcase-a a {
             font-family: var(--font-inter);
             font-size: var(--font-size-16);
             font-weight: var(--font-weight-light);
             text-decoration: none;
-            color: var(--color-black);
+            color: black;
             padding-right: 10px;
             padding-left: 10px;
             transition: all ease-in-out;
+            position: relative;
+            z-index: 2;
         }
 
             .connect-showcase a:hover{
                 text-decoration: underline;
+                z-index: 1;
             }
 
         .connect-showcase h1 {
@@ -1021,9 +1036,199 @@ a:hover i {
             font-size: 56px;
             font-weight: var(--font-weight-bold);
             text-decoration: none;
-            color: var(--color-black);
+            color: #191919;
+            z-index: 1;
         }
         
         
-        
+  
+.digitalization h2 {
+    font-family: var(--font-dm);
+    font-size: var(--font-size-45);
+    font-weight: var(--font-weight-bold);
+    color: #191919;
+}
+
+    .digitalization .digitalization-points {
+        display: flex;
+    }
+
+        .digitalization .digitalization-points h4 {
+            font-family: var(--font-dm);
+            font-size: var(--font-size-20);
+            font-weight: 500;
+            color: #191919;
+            margin-right: 30px;
+            margin-top: 25px;
+        }
+
+            .digitalization .digitalization-points .fa-solid {
+                font-size: 10px;
+            } 
+
+    .digitalization-flex {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr;
+        gap: 140px;
+    }
+    
+        .digitalization-flex .digitalization-left {
+            flex-direction: column; 
+        }
+
+            .digitalization-flex .digitalization-left img {
+                width: 760px;
+                margin-top: 75px;
+            }
+
+            .digitalization-flex .digitalization-left h4 {
+                font-family: var(--font-inter);
+                font-size: var(--font-size-16);
+                font-weight: var(--font-weight-regular);
+                color: var(--color-black-opacity-70);
+            }
+
+            .digitalization-flex .digitalization-left .quote {
+                margin-top: 100px;
+                margin-bottom: 80px;
+                display: flex;
+                flex-direction: row;
+            }
+
+                .digitalization-flex .digitalization-left .quote h2 {
+                    margin-right: 20px;
+                }
+
+            .digitalization-flex .digitalization-left .text-0 {
+                margin-top: 52px;
+            }
+
+            .digitalization-flex .digitalization-left .text-1 {
+                margin-top: 45px;
+            }
+
+            .digitalization-flex .digitalization-left .text-2 {
+                margin-bottom: 45px;
+            }
+
+            .digitalization-flex .digitalization-left button {
+                background-color: rgb(112, 112, 112, 10%);
+                border: none;
+                color: #191919;
+                font-family: var(--font-inter);
+                font-size: var(--font-size-14);
+                font-weight: 500;
+                border-radius: 25px;
+                font-weight: 500;
+                padding: 15px 20px ;
+                margin-right: 6px;
+                transition: all 200ms ease-in-out;
+                margin-bottom: 65px;
+                min-width: 100px;
+            }
+
+                .digitalization-flex .digitalization-left button:hover {
+                    background-color: var(--color-yellow-botton);
+                }
+
+            
+         
+
+        .digitalization-flex .digitalization-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .digitalization-flex .digitalization-right input {
+                margin-bottom: 40px;
+                width: 100%;
+                background-color: #F3F3F3;
+                border: none;
+                border-radius: 25px;
+                padding-top: 17px;
+                padding-bottom: 15px;
+                padding-left: 15px;
+            }
+
+            .digitalization-flex .digitalization-right .recent-posts {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                border: 1px solid rgb(112, 112, 112, 20%);
+                padding: 40px;
+                margin-bottom: 40px;
+            }
+
+                .digitalization-flex .digitalization-right .recent-posts a {
+                    font-family: var(--font-dm);
+                    font-size: var(--font-size-22);
+                    font-weight: var(--font-weight-bold);
+                    color: #191919;
+                    text-decoration: none;
+                }
+
+                    .digitalization-flex .digitalization-right .recent-posts a:hover {
+                        text-decoration: underline;
+                    }
+
+                .digitalization-flex .digitalization-right .recent-posts h5 {
+                    font-family: var(--font-dm);
+                    font-size: var(--font-size-16);
+                    font-weight: var(--font-weight-bold);
+                }
+
+                .digitalization-flex .digitalization-right .recent-posts h6 {
+                    font-family: var(--font-inter);
+                    font-size: var(--font-size-14);
+                    font-weight: var(--font-weight-regular);
+                    color: var(--color-black-opacity-70);
+                }
+
+                .digitalization-flex .digitalization-right .recent-posts .border {
+                    border: 1px solid rgb(112, 112, 112, 20%);
+                }
+
+            .digitalization-flex .digitalization-right .categories {
+                border: 1px solid rgb(112, 112, 112, 20%);
+                padding-top: 50px;
+                padding-left: 40px;
+                padding-bottom: 45px;
+            }
+
+                .digitalization-flex .digitalization-right .categories .category-title{
+                    font-size: var(--font-size-22);
+                    text-decoration: none;
+                    font-family: var(--font-dm);
+                    font-weight: var(--font-weight-bold);
+                    color: #191919;
+                    transition: all 200ms ease-in-out;
+                }
+
+                    .digitalization-flex .digitalization-right .categories .category-title:hover{
+                        text-decoration: underline;
+                    }
+
+                .digitalization-flex .digitalization-right .categories .subcategories{
+                  display: flex;
+                  flex-direction: row;
+                  margin-bottom: 20px;
+                }
+
+                    .digitalization-flex .digitalization-right .categories .subcategories h5{
+                        font-family: var(--font-dm);
+                        font-size: var(--font-size-16);
+                        font-weight: var(--font-weight-bold);
+                    }
+
+                    .digitalization-flex .digitalization-right .categories .subcategories .subcategory-black{
+                        color: #191919;
+                    }
+
+                    .digitalization-flex .digitalization-right .categories .subcategories .subcategory-gray{
+                        color: rgb(112, 112, 112, 60%);
+                    }
+
+                .digitalization-flex .digitalization-right .categories .technology{
+                    margin-top: 30px;
+                  }      
         

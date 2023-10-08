@@ -1,8 +1,26 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NewsPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.PublishedContent;
 @{
-	Layout = "LayoutWithBreadcrumb.cshtml";
+    Layout = "LayoutWithBreadcrumb.cshtml";
+    ViewData["PageTitle"] = "News & Articles";
+
+    var itemsPerPage = 9;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+    {
+        pageNumber = 1;
+    }
+
+    var selection = Umbraco?.Content(Guid.Parse("558dc1ca-a36b-4959-94a3-58c3c89d795c"))?
+            .ChildrenOfType("articleItemPage")?
+            .Where(x => x.IsVisible())
+            .OrderByDescending(x => x.CreateDate);
+
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
 }
 
 
@@ -12,123 +30,64 @@
             <div class="news-title">
                 <h1>Our News & Articles</h1>
             </div>
+            
             <div class="news-grid">
-                
-                
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>25</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im1.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>How To Use Digitalization In The Classroom</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-                
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>17</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im2.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>How To Implement Chat GPT In Your Projects</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-                
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>13</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im3.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>The Guide To Support Modern CSS Design</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-            </div>
 
-            <div class="news-grid">
+                @if (pagedItems != null)
+                {
+                    @foreach (var item in pagedItems!)
+                    {
+                        var url = item.Url();
+                        var date = item.CreateDate;
+                        var image = item.Value<IPublishedContent>("newsImage");
+                        var category = item.Value("newsCategory");
+                        var title = item.Name();
+                        var preamble = item.Value("newsPreamble");
+    
+    
+                        <a href="@url" class="news-card">
+                            <div class="yellow-square">
+                                <h2>@date.ToString("dd")</h2>
+                                <p>@date.ToString("MMM")</p>
+                            </div>
+                            <img src="@image?.Url()" alt="news">
+                            <p>@category</p>
+                            <h3>@title</h3>
+                            <p>@preamble</p>
+                        </a>
+                    }
+                }
                 
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>12</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im4.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>Why You Need To Implement The Five S's</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-                
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>07</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im5.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>Get More Involved With Your End Users</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-                
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>02</h2>
-                        <p>Mar</p>
-                    </div>
-                    <img src="/images/im6.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>Guided Tour Of Our New Head Office In Stockholm</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
             </div>
-
-            <div class="news-grid">
-                
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>28</h2>
-                        <p>Feb</p>
-                    </div>
-                    <img src="/images/img4.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>Using Business Intelligence To Get Insights Into Our Businesses</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-                
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>18</h2>
-                        <p>Feb</p>
-                    </div>
-                    <img src="/images/img2.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>Apple Has Released New Products. Are They Any Good?</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-                
-                <div class="news-card">
-                    <div class="yellow-square">
-                        <h2>11</h2>
-                        <p>Feb</p>
-                    </div>
-                    <img src="/images/img3.jpg" alt="news">
-                    <p>Business</p>
-                    <h3>How To Improve Your Teams And Get A Better Result</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.</p>
-                </div>
-            </div>
+            
 
             <div class="moving-news">
-                <button><</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>...</button>
-                <button>9</button>
-                <button>></button>
+                
+                @if (pageNumber > 1)
+                {
+                    <a href="?page=@(pageNumber - 1)"> &lt; </a>
+                }
+
+                @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++) 
+                {
+                    if (i == pageNumber)
+                    {
+                    <a href="#" class="active">@i</a>
+                    } else
+                    {
+                    <a href="?page=@i">@i</a>
+                    }
+                }   
+
+                
+                    
+                
+                @if (pageNumber < Math.Ceiling((decimal)totalItems / itemsPerPage))
+                {
+                    <a href="?page=@(pageNumber + 1)"> &gt; </a>
+                }
+            
+
             </div>
         </div>
     </section>

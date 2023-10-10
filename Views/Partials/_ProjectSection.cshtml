@@ -1,42 +1,59 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
 
+
+@{
+    var selection = Umbraco.Content(Guid.Parse("f16dfb96-66ac-4deb-8f49-daa65ac4114a"))
+        .ChildrenOfType("serviceItemPage")
+        .Where(x => x.IsVisible())
+        .OrderBy(x => x.CreateDate);
+
+    int itemsPerPage = 4;
+    int count = 0;
+}
+
+
+	
+
 <section class="project-section">
-    <p>Project & Case Studies </p>
-    <h1>Let’s Looks Our Global Projects</h1>
-    <div class="big-grid container">
-        <div class="grid-card">
-                <img src="images/img1.jpg" alt="grid image">
-            <p>Grow your business</p>
-            <div class="gray-line"></div>
-            <button class="white-button">Read More 
-                <i class="fa-solid fa-arrow-up-right"></i>
-            </button>
+        <p>Project & Case Studies </p>
+        <h1>Let’s Looks Our Global Projects</h1>
+        <div class="big-grid container">
+
+        
+
+            @if(selection != null)
+            {
+                @foreach (var item in selection)
+                {
+                    var url = item.Url();
+                    var date = item.CreateDate;
+                    var image = item.Value<IPublishedContent>("serviceItemImage");
+                    var header = item.Value("serviceItemTitle");
+                    
+
+                if (count < itemsPerPage)
+                {
+                    <div class="grid-card">
+                        <img src="@image.Url()" alt="@header">
+                        <p>@item.Value("pageDescription")</p>
+                        <div class="gray-line"></div>
+                        <a href="@url" class="white-button">
+                            Read More
+                            <i class="fa-solid fa-arrow-up-right"></i>
+                        </a>
+                    </div>
+
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+
+                }
+            }
+        	
         </div>
-        <div class="grid-card">
-                <img src="images/img2.jpg" alt="grid image">
-            <p>Why your client needs a responsive website</p>
-            <div class="gray-line"></div>
-            <button class="white-button">Read More 
-                <i class="fa-solid fa-arrow-up-right"></i>
-            </button>
-        </div>
-        <div class="grid-card">
-                <img src="images/img3.jpg" alt="grid image">
-            <p>Educate your employees to get better results</p>
-            <div class="gray-line"></div>
-            <button class="white-button">Read More 
-                <i class="fa-solid fa-arrow-up-right"></i>
-            </button>
-        </div>
-        <div class="grid-card">
-                <img src="images/img4.jpg" alt="grid image">
-            <p>Business Insights is a important piece of your business</p>
-            <div class="gray-line"></div>
-            <button class="white-button">Read More 
-                <i class="fa-solid fa-arrow-up-right"></i>
-            </button>
-        </div>
-    </div>
-    <button class="black-btn">All Recent Projects <i class="fa-solid fa-arrow-up-right"></i></button>
-</section>
+        <button class="black-btn">All Recent Projects <i class="fa-solid fa-arrow-up-right"></i></button>
+    </section>

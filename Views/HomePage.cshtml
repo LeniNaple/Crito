@@ -14,7 +14,6 @@
  @await Html.PartialAsync("_BrandSection")
  
  
- 
  <section class="features ">
     <div class="features-container container">
         <div class="left-features">
@@ -28,65 +27,58 @@
     </div>
 </section>
 
+
 @await Html.PartialAsync("_About-Us")
 
+
  <section class="our-services ">
-        <div class="container">
-            <p>@Model.Value("ourServicesTitle")</p>
-            <h1>@Model.Value("ourServicesHeader")</h1>
+    <div class="container">
+        <p>@Model.Value("ourServicesTitle")</p>
+        <h1>@Model.Value("ourServicesHeader")</h1>
+        
+            @Html.GetBlockListHtml(Model.OurServicesOptions)
             
-                @Html.GetBlockListHtml(Model.OurServicesOptions)
-                
+    </div>
+    <a href="/service" class="beige-btn">Browse Services <i class="fa-solid fa-arrow-up-right"></i></a>
+    <img class="wavy-right" src="images/background-lines-right.svg" alt="">
+</section>
+    
+    
+ <section class="choose-us ">
+    <div class="beige-background"></div>
+    <div class="container">
+        <div class="choice-left">
+            <p>@Model.Value("chooseUsTitle")</p>
+            <h1>@Model.Value("chooseUsHeader")</h1>
+            
+            @Html.GetBlockListHtml(Model.ChooseUsChoices)
+
         </div>
-        <a href="/service" class="beige-btn">Browse Services <i class="fa-solid fa-arrow-up-right"></i></a>
-        <img class="wavy-right" src="images/background-lines-right.svg" alt="">
-    </section>
-    
-    
-    
-     <section class="choose-us ">
-        <div class="beige-background"></div>
-        <div class="container">
-            <div class="choice-left">
-                <p>@Model.Value("chooseUsTitle")</p>
-                <h1>@Model.Value("chooseUsHeader")</h1>
+        
+        <div class="choice-right">
+            
+            @{
+                var chooseUsImg = Model.Value<MediaWithCrops>("chooseUsImg");
+                if (chooseUsImg != null) {
                 
-                @Html.GetBlockListHtml(Model.ChooseUsChoices)
-    
-    
-            </div>
-            
-            
-            
-            <div class="choice-right">
-
-
-               
+                <img src="@chooseUsImg.MediaUrl()" alt="@Model.Value("chooseUsTitle")" />
                 
-                @{
-                    var chooseUsImg = Model.Value<MediaWithCrops>("chooseUsImg");
-                    if (chooseUsImg != null) {
-                    
-                    <img src="@chooseUsImg.MediaUrl()" alt="@Model.Value("chooseUsTitle")" />
-                    
-                    }
-
                 }
 
+            }
 
-            </div>
         </div>
-    </section>
+    </div>
+</section>
     
-    <!--These two are static for now-->
-    @await Html.PartialAsync("_ProjectSection")
-    
-    @await Html.PartialAsync("_TeamSection")
-    
-    
-    
-    @await Html.PartialAsync("_NewsSection")
-    
-    @await Html.PartialAsync("_SearchbarSection")
+
+@await Html.PartialAsync("_ProjectSection")
+
+<!--This one is static, because i would rather have it javascript-->
+@await Html.PartialAsync("_TeamSection")
+
+@await Html.PartialAsync("_NewsSection")
+
+@await Html.PartialAsync("_SearchbarSection")
     
     

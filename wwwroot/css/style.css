@@ -568,6 +568,7 @@ a:hover i {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 100px;
 }     
     .project-section > p {
         color: #F94D1C;
@@ -590,7 +591,7 @@ a:hover i {
             flex-direction: column;
             gap: 10px;
         }  
-            .project-section .big-grid .grid-card button {
+            .project-section .big-grid .grid-card a {
                 align-self: flex-end;
                 margin-top: 15px;
                 border: none;
@@ -1237,4 +1238,55 @@ a:hover i {
                 .digitalization-flex .digitalization-right .categories .technology{
                     margin-top: 30px;
                   }      
+            
+                  
+.contact-section {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 80px;
+}
+
+    .contact-section .contact-section-box {
+        border: 1px solid rgb(25, 25, 25, 20%);
+        display: flex;
+        padding-left: 60px;
+        padding-right: 110px;
+        padding-top: 45px;
+        padding-bottom: 45px;
+
+    }
+
+        .contact-section .contact-section-box button{
+            background-color: var(--color-black);
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+        }
+
+        .contact-section .contact-section-box h3{
+            font-family: var(--font-dm);
+            font-size: var(--font-size-22);
+            font-weight: var(--font-weight-bold);
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .contact-section .contact-section-box p{
+            font-family: var(--font-inter);
+            font-size: var(--font-size-18);
+            font-weight: var(--font-weight-regular);
+            margin-left: 20px;
+        }
         
+        
+.map {
+    margin-bottom:-6px;
+}
+
+    .map iframe {
+        width: 100%;
+        height: 620px;
+        padding-top: 120px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }

@@ -2,8 +2,10 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = "LayoutWithBreadcrumb.cshtml";
-	ViewData["PageTitle"] = "Let’s Connect";
+    Layout = "LayoutWithBreadcrumb.cshtml";
+    ViewData["PageTitle"] = "Let’s Connect";
+
+    var contactForm = new Crito.Models.ContactForm();
 }
 
 
@@ -11,9 +13,22 @@
 @await Html.PartialAsync("_ContactSection")
 
 
-<!--Add form section here-->
+@using (Html.BeginUmbracoForm("Index", "Contact", FormMethod.Post))
+{
+<section class="message-section container">
+    <h3 class="message-section-title-one">Leave us a message </h3>
+    <h3 class="message-section-title-two">for any information.</h3>
 
+    <div asp-validation-summary="All"></div>
 
+    <input class="message-input" type="text" id="message-name" asp-for="@contactForm.Name" placeholder="Name*">
+    <input class="message-input" type="email" id="message-email" asp-for="@contactForm.Email" placeholder="Email*">
+    <textarea class="message-input-message" type="text" id="message-your-message" asp-for="@contactForm.Message" placeholder="Your Message*"></textarea>
+
+    <button type="submit" class="send-message-button">Send Message <i class="fa-solid fa-arrow-up-right"></i></button>
+</section>
+}
+    
 
 @await Html.PartialAsync("_MapSection")
 
